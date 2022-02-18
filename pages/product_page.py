@@ -29,3 +29,10 @@ class ProductPage(BasePage):
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE)
         product_price_in_message = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_IN_MESSAGE)
         assert product_price.text == product_price_in_message.text, "Product price in the message isn't correct"
+
+    def should_not_be_success_message(self): #проверка отсутствия сообщения об успешном добавлении товара, когда корзина пустая
+        assert self.is_not_element_present(*ProductPageLocators.ADDED_TO_BASKET_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def success_message_should_disappear(self):
+        assert self.is_disappeared(*ProductPageLocators.ADDED_TO_BASKET_MESSAGE), "Success message didn't dissapear"
