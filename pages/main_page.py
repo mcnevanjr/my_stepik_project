@@ -1,10 +1,8 @@
 from .base_page import BasePage
-from .locators import MainPageLocators
 
-
+#В классе MainPage у нас не осталось никаких методов, поэтому добавим туда заглушку:
 class MainPage(BasePage):
-    def go_to_login_page(self):
-        assert self.is_element_present(*MainPageLocators.LOGIN_LINK), "Login link is not presented"
-
-    def should_be_login_link(self):
-        assert self.is_element_present(*MainPageLocators.LOGIN_LINK), "Login link is not presented"
+    def __init__(self, *args, **kwargs):
+        super(MainPage, self).__init__(*args, **kwargs)  #В классе MainPage у нас не осталось никаких методов, поэтому добавим туда заглушку:
+                                                         #Как вы уже знаете, метод __init__ вызывается при создании объекта. Конструктор выше с ключевым словом super
+                                                         # на самом деле только вызывает конструктор класса предка и передает ему все те аргументы, которые мы передали в конструктор MainPage.
